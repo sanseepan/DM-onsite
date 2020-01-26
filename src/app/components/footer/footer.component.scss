@@ -1,0 +1,19 @@
+.app-footer {
+    color: white;
+    background-color:  #112d37;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    .footer-links a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        border-bottom: 1px solid lightgray;
+      }
+    
+ }

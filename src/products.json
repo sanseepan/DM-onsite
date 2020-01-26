@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "name": "Apple iPhone 6s",
+      "color": "Stonegrey",
+      "price": "769",
+      "id": 1
+    },
+    {
+      "name": "Samsung Galaxy S8",
+      "color": "Midnight Black",
+      "price": "569",
+      "id": 2
+    },
+    {
+      "name": "Huawei P9",
+      "color": "Mystic Silver",
+      "price": "272",
+      "id": 3
+    }
+  ],
+  "colors": [
+    {
+      "domain": "Stonegrey",
+      "range": "Dark Grey",
+      "id": 101
+    },
+    {
+      "domain": "Midnight Black",
+      "range": "Black",
+      "id": 102
+    },
+    {
+      "domain": "Mystic Silver",
+      "range": "Silver",
+      "id": 103
+    }
+  ]
+}

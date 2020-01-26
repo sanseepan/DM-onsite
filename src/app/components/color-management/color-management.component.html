@@ -1,0 +1,30 @@
+<div class="color-container">
+  <div class="add-dict">
+    <i></i>
+    <i [routerLink]="['/add']" class="icon-add"><img src="https://img.icons8.com/pastel-glyph/64/000000/create-new--v3.png" class="icon">Add new</i>
+  </div>
+    <div class="table-container">
+    <table  class="color-table">
+      <thead>
+      <tr>
+      <th>Id</th>
+      <th>Domain</th>
+      <th>Range</th>
+      <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let color of colors">
+        <td>{{color.id}}</td>
+        <td>{{color.domain}}</td>
+        <td>{{color.range}}</td>
+        <td>
+          <i (click) = "deleteOneColor(color)" class="icon-group"><img src="https://img.icons8.com/color/48/000000/delete-sign.png" class="icon">Delete</i>
+          <i [routerLink]="['/edit', color.id]" class="icon-group"><img src="https://img.icons8.com/metro/26/000000/edit.png" class="icon">Edit</i>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+   
+</div>
