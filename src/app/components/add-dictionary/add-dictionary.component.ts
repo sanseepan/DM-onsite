@@ -14,6 +14,8 @@ export class AddDictionaryComponent implements OnInit {
   colors: Color[];
   entryForm: FormGroup;
   color: Color;
+  validatorArray = [];
+
 
   constructor(private productService: ProductService,
               private formBuilder: FormBuilder,
@@ -30,6 +32,10 @@ export class AddDictionaryComponent implements OnInit {
   getAllColors() {
     this.productService.getAllColors().subscribe(colors => {
       this.colors = colors;
+
+      this.colors.forEach(color => {
+        this.validatorArray.push(color.domain, color.range);
+      })
   
     })
   }
@@ -44,35 +50,20 @@ export class AddDictionaryComponent implements OnInit {
     this.entryForm.reset();
 
   }
+ 
+  addValidatedColor() {
+    const allColorsAsString = this.validatorArray.join('');
+    const formValue = this.entryForm.value;
+    if((allColorsAsString.includes(formValue.domain)) || (allColorsAsString.includes(formValue.range) )) {
+      alert('Already you have added it  please check and enter the new value ')
+    }
 
-    // To Do 
-    //function to prevent duplicate data
-
- /* 
-  addAvalidatedColor() {
-    this.productService.getAllColors().subscribe(colors => {
-        this.colors = colors;
-        colors.forEach(color => {        
-          let formValue = this.entryForm.value;
-        if(color.domain === formValue || color.range == formValue) {
-          alert('Already you have added it  please check and enter the new value ')
-
-        }
-        else  {
-          this.productService.postColor(this.entryForm.value)
-             .subscribe(color => {
-              this.colors.push(color);
-             this.router.navigate(['/admin'])
-              console.log(color, 'dictionary has been added' );
-      }); 
-              this.entryForm.reset();
-        }     
-        })
-       
-       
-    })
+    else {
+      this.addNewColor();
+    }
+   
   }
 
-*/
+
 
 }

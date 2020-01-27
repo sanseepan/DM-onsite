@@ -13,6 +13,7 @@ export class EditDictionaryComponent implements OnInit {
   entryForm: FormGroup;
   color: Color;
   colors: Color[];
+  validatorArray = [];
 
   constructor( private productService: ProductService, 
                private formBuilder: FormBuilder,
@@ -22,12 +23,24 @@ export class EditDictionaryComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    
+    this.getAllColors();
     this.getColorById(this.route.snapshot.params['id']);
     this.entryForm = this.formBuilder.group({
       domain: '',
       range: '',
     });
+  }
+
+  
+  getAllColors() {
+    this.productService.getAllColors().subscribe(colors => {
+      this.colors = colors;
+
+      this.colors.forEach(color => {
+        this.validatorArray.push(color.domain, color.range);
+      })
+  
+    })
   }
 
    
@@ -49,4 +62,20 @@ export class EditDictionaryComponent implements OnInit {
       this.entryForm.reset();
       
   }
+
+  addValidatedColor() {
+    const allColorsAsString = this.validatorArray.join('');
+    const formValue = this.entryForm.value;
+    if((allColorsAsString.includes(formValue.domain)) || (allColorsAsString.includes(formValue.range) )) {
+      alert('Already you have added it  please check and enter the new value ')
+    }
+
+    else {
+      this.updateColor();
+    }
+   
+  }
+
+
+
 }

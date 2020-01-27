@@ -1,7 +1,7 @@
 <div class="edit-container">
   <div class="form-container">
       <h1>Edit here!<span>please fill and update it!</span></h1>
-      <form [formGroup]="entryForm" (ngSubmit)="updateColor(entryForm.value)">
+      <form [formGroup]="entryForm" (ngSubmit)="addValidatedColor(entryForm.value)">
           <div class="header-text">Domain & Range</div>
           <div class="input-fields">
               <label for="domain">Domain 
